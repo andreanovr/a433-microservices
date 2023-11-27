@@ -1,20 +1,18 @@
 version: '2'
 
 services:
-  # Service untuk aplikasi item-app
   item-app:
     image: ghcr.io/andreanovr/item-app:v1
     ports:
-      - "80:8080"  # Memetakan port 80 di host ke port 8080 di kontainer
+      - "80:8080"
     depends_on:
-      - item-db  # Menjamin bahwa item-db berjalan sebelum item-app
-    restart: always  # Mengatur kebijakan restart kontainer menjadi selalu
+      - item-db 
+    restart: always 
 
-  # Service untuk database item-db
   item-db:
     image: mongo:3
     volumes:
-      - app-db:/data/db  # Menggunakan volume bernama app-db untuk menyimpan data database
+      - app-db:/data/db
 
 volumes:
-  app-db:  # Definisi volume app-db
+  app-db:
