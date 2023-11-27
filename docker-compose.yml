@@ -1,18 +1,22 @@
+# Menggunakan Docker Compose versi 2
 version: '2'
 
 services:
+  # Service 1
   item-app:
     image: ghcr.io/andreanovr/item-app:v1
     ports:
-      - "80:8080"
+      - "80:8080" # Melakukan port mapping agar dapat diakses dari port 80 di host
     depends_on:
-      - item-db 
+      - item-db # Service ini hanya berjalan setelah service item-db diluncurkan
     restart: always 
 
+  # Service 2
   item-db:
-    image: mongo:3
+    image: mongo:3 # Menggunakan image mongo:3
     volumes:
-      - app-db:/data/db
+      - app-db:/data/db # Memakai volume bernama app-db dengan target /data/db di container
 
+# Volume
 volumes:
   app-db:

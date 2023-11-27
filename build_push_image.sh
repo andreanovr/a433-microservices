@@ -6,11 +6,11 @@ docker build -t item-app:v1 .
 # Melihat daftar image di lokal.
 docker images
 
-# Mengubah nama image agar sesuai dengan format Docker Hub (atau GitHub Packages bila menerapkan saran keempat).
+# Mengubah nama image agar sesuai dengan format GitHub Packages
 docker tag item-app:v1 ghcr.io/andreanovr/item-app:v1
 
-# Login ke Docker Hub (atau GitHub Packages bila menerapkan saran keempat) via Terminal.
+# Login ke GitHub Packages
 echo $GHP_TOKEN | docker login ghcr.io -u andreanovr --password-stdin
 
-# Mengunggah image ke Docker Hub (atau GitHub Packages bila menerapkan saran keempat).
+# Mengunggah image ke GitHub Packages
 docker push ghcr.io/andreanovr/item-app:v1
